@@ -562,7 +562,7 @@
 </a>
 
 <!-- ==========================================
-         9. FLOATING WHATSAPP & CALL ICONS (CORNER)
+         STICKY FLOATING WHATSAPP & CALL BUTTONS (WITH BOUNCE ANIMATION)
          ========================================== -->
     <div class="floating-contact-wrapper">
     <a href="tel:+94767137478" class="contact-btn phone-btn" title="Call Us Now">
@@ -624,6 +624,45 @@
 
     /* --- ANIMATION KINETICS --- */
     
+    /* 1. WhatsApp සඳහා එහාට මෙහාට වෙන (Wobble) ඇනිමේෂන් එක */
+    @keyframes wobbleAnimation {
+        0%, 100% { transform: rotate(0) scale(1); }
+        15% { transform: rotate(-15deg) scale(1.05); }
+        30% { transform: rotate(13deg) scale(1.05); }
+        45% { transform: rotate(-10deg) scale(1.05); }
+        60% { transform: rotate(7deg) scale(1.05); }
+        75% { transform: rotate(0) scale(1.05); }
+    }
+
+    /* 2. Call බටන් එක සඳහා ගැහෙන (Pulse) ඇනිමේෂන් එක */
+    @keyframes pulseAnimation {
+        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(11, 44, 95, 0.5); }
+        70% { transform: scale(1.05); box-shadow: 0 0 0 12px rgba(11, 44, 95, 0); }
+        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(11, 44, 95, 0); }
+    }
+
+    /* Mobile Phones වලදී බටන් ටික පොඩ්ඩක් කුඩා කිරීමට */
+    @media (max-width: 480px) {
+        .floating-contact-wrapper { bottom: 20px; right: 20px; gap: 12px; }
+        .contact-btn { width: 50px; height: 50px; font-size: 22px; }
+    }
+</style>
+
+<script>
+    (function() {
+        // 1. ඔයාගේ WhatsApp අංකය (රටේ කේතය සමඟ)
+        const targetNumber = "94767137478"; 
+        
+        // 2. ඔයා ඉල්ලපු සුදුසුම Premium Inquire Message එක
+        const inquiryText = "Hello Ride Lanka Cabs! I would like to inquire about booking a vehicle. Could you please help me?";
+        
+        // 3. ස්මාර්ට් ලින්ක් එක බටන් එකට සම්බන්ධ කිරීම
+        const whatsappBtn = document.getElementById('floatingWhatsAppBtn');
+        if(whatsappBtn) {
+            whatsappBtn.href = `https://api.whatsapp.com/send?phone=${targetNumber}&text=${encodeURIComponent(inquiryText)}`;
+        }
+    })();
+</script>
     
 </body>
 </html>
