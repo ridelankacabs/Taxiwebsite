@@ -197,11 +197,11 @@
                 <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 35px;">
                     <!-- Book Your Ride Now Button -->
                     <a href="booking.html" style="background-color: #0B2C5F; color: #ffffff; padding: 14px 35px; font-size: 1rem; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 2px solid #0B2C5F; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#D4AF37'; this.style.borderColor='#D4AF37'; this.style.color='#0B2C5F';" onmouseout="this.style.backgroundColor='#0B2C5F'; this.style.borderColor='#0B2C5F'; this.style.color='#ffffff';">
-                        <i class="fas fa-calendar-check" style="margin-right: 8px;"></i> Book Your Ride Now
+                        <i class="fas fa-calendar-check" style="margin-right: 8px;"></i> Book Your Hire Now
                     </a>
                     <!-- Explore Services Button -->
                     <a href="services.html" style="background-color: #0B2C5F; color: #ffffff; padding: 14px 35px; font-size: 1rem; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 2px solid #0B2C5F; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#D4AF37'; this.style.borderColor='#D4AF37'; this.style.color='#0B2C5F';" onmouseout="this.style.backgroundColor='#0B2C5F'; this.style.borderColor='#0B2C5F'; this.style.color='#ffffff';">
-                        <i class="fas fa-car" style="margin-right: 8px;"></i> Explore Our Services
+                        <i class="fas fa-car" style="margin-right: 8px;"></i> Our Hire & Cab Services
                     </a>
                 </div>
 
@@ -868,152 +868,135 @@
 
     <!-- 6. Popular Taxi Service Areas Across Sri Lanka (UPDATED WITH 16 DESTINATIONS) -->
     <section style="padding: 60px 20px; text-align: center; background-color: #ffffff;">
-        <h2 style="color: #0B2C5F; font-size: 2.2rem; margin-bottom: 10px;">Popular Taxi Service Areas Across Sri Lanka</h2>
-        <p style="color: #666; margin-bottom: 40px;">We operate in all major districts and tourist destinations. Select your location to explore.</p>
-        
-        <style>
-            .area-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-                gap: 25px;
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 10px;
-            }
-            .area-card {
-                position: relative;
-                height: 280px;
-                border-radius: 12px;
-                overflow: hidden;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-                cursor: pointer;
-            }
-            .area-card:hover {
-                transform: translateY(-8px);
-                box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-            }
-            .area-img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition: transform 0.5s ease;
-            }
-            .area-card:hover .area-img {
-                transform: scale(1.1);
-            }
-            .area-overlay {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(to top, rgba(11, 44, 95, 0.9) 10%, rgba(0,0,0,0.1) 60%);
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-end;
-                padding: 20px;
-                text-align: left;
-            }
-            .area-overlay h3 {
-                color: #ffffff;
-                font-size: 1.3rem;
-                margin-bottom: 5px;
-                font-weight: 600;
-            }
-            .area-overlay span {
-                color: #D4AF37;
-                font-size: 0.85rem;
-                font-weight: 500;
-                letter-spacing: 0.5px;
-            }
-        </style>
+    <h2 style="color: #0B2C5F; font-size: 2.2rem; margin-bottom: 10px;">Popular Taxi Service Areas Across Sri Lanka</h2>
+    <p style="color: #666; margin-bottom: 40px;">We operate in all major districts and tourist destinations. Select your location to explore.</p>
+    
+    <style>
+        .area-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        .area-card {
+            position: relative;
+            height: 280px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: block;
+            text-decoration: none;
+        }
+        .area-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+        .area-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .area-card:hover .area-img {
+            transform: scale(1.1);
+        }
+        .area-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(11, 44, 95, 0.9) 10%, rgba(0,0,0,0.1) 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            text-align: left;
+        }
+        .area-overlay h3 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .area-overlay span {
+            color: #D4AF37;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+    </style>
 
-        <div class="area-grid">
-            <!-- Colombo -->
-            <div class="area-card">
-                <img src="images/destinations/colombo.jpg" alt="Colombo" class="area-img">
-                <div class="area-overlay"><h3>Colombo</h3><span>Explore City →</span></div>
-            </div>
-            <!-- Kalutara -->
-            <div class="area-card">
-                <img src="images/destinations/kalutara.jpg" alt="Kalutara" class="area-img">
-                <div class="area-overlay"><h3>Kalutara</h3><span>Explore City →</span></div>
-            </div>
-            <!-- Galle -->
-            <div class="area-card">
-                <img src="images/destinations/galle.jpg" alt="Galle" class="area-img">
-                <div class="area-overlay"><h3>Galle</h3><span>Explore City →</span></div>
-            </div>
-            <!-- Matara -->
-            <div class="area-card">
-                <img src="images/destinations/matara.jpg" alt="Matara" class="area-img">
-                <div class="area-overlay"><h3>Matara</h3><span>Explore City →</span></div>
-            </div>
-            <!-- Kataragama -->
-            <div class="area-card">
-                <img src="images/destinations/kataragama.jpg" alt="Kataragama" class="area-img">
-                <div class="area-overlay"><h3>Kataragama</h3><span>Explore City →</span></div>
-            </div>
-            <!-- Ella -->
-            <div class="area-card">
-                <img src="images/destinations/ella.jpg" alt="Ella" class="area-img">
-                <div class="area-overlay"><h3>Ella</h3><span>Explore Destination →</span></div>
-            </div>
-            <!-- Nuwaraeliya -->
-            <div class="area-card">
-                <img src="images/destinations/nuwaraeliya.jpg" alt="Nuwaraeliya" class="area-img">
-                <div class="area-overlay"><h3>Nuwara Eliya</h3><span>Explore Destination →</span></div>
-            </div>
-            <!-- Kandy -->
-            <div class="area-card">
-                <img src="images/destinations/kandy.jpg" alt="Kandy" class="area-img">
-                <div class="area-overlay"><h3>Kandy</h3><span>Explore City →</span></div>
-            </div>
-            <!-- Matale -->
-            <div class="area-card">
-                <img src="images/destinations/matale.jpg" alt="Matale" class="area-img">
-                <div class="area-overlay"><h3>Matale</h3><span>Explore City →</span></div>
-            </div>
-            <!-- Dambulla -->
-            <div class="area-card">
-                <img src="images/destinations/dambulla.jpg" alt="Dambulla" class="area-img">
-                <div class="area-overlay"><h3>Dambulla</h3><span>Explore Destination →</span></div>
-            </div>
-            <!-- Sigiriya -->
-            <div class="area-card">
-                <img src="images/destinations/sigiriya.jpg" alt="Sigiriya" class="area-img">
-                <div class="area-overlay"><h3>Sigiriya</h3><span>Explore Destination →</span></div>
-            </div>
-            <!-- Anuradhapura -->
-            <div class="area-card">
-                <img src="images/destinations/anuradhapura.jpg" alt="Anuradhapura" class="area-img">
-                <div class="area-overlay"><h3>Anuradhapura</h3><span>Explore Destination →</span></div>
-            </div>
-            <!-- Jaffna -->
-            <div class="area-card">
-                <img src="images/destinations/jaffna.jpg" alt="Jaffna" class="area-img">
-                <div class="area-overlay"><h3>Jaffna</h3><span>Explore City →</span></div>
-            </div>
-            
-            <!-- NEW: Trincomalee -->
-            <div class="area-card">
-                <img src="images/destinations/trincomalee.jpg" alt="Trincomalee" class="area-img">
-                <div class="area-overlay"><h3>Trincomalee</h3><span>Explore City →</span></div>
-            </div>
-            <!-- NEW: Arugam Bay -->
-            <div class="area-card">
-                <img src="images/destinations/arugambay.jpg" alt="Arugam Bay" class="area-img">
-                <div class="area-overlay"><h3>Arugam Bay</h3><span>Explore Destination →</span></div>
-            </div>
-            <!-- NEW: Polonnaruwa -->
-            <div class="area-card">
-                <img src="images/destinations/polonnaruwa.jpg" alt="Polonnaruwa" class="area-img">
-                <div class="area-overlay"><h3>Polonnaruwa</h3><span>Explore Destination →</span></div>
-            </div>
-        </div>
-    </section>
-
+    <div class="area-grid">
+        <a href="colombo.html" class="area-card">
+            <img src="images/destinations/colombo.jpg" alt="Ride Lanka Cabs Taxi Service in Colombo" class="area-img">
+            <div class="area-overlay"><h3>Colombo</h3><span>Explore City →</span></div>
+        </a>
+        <a href="kalutara.html" class="area-card">
+            <img src="images/destinations/kalutara.jpg" alt="Ride Lanka Cabs Taxi Service in Kalutara" class="area-img">
+            <div class="area-overlay"><h3>Kalutara</h3><span>Explore City →</span></div>
+        </a>
+        <a href="galle.html" class="area-card">
+            <img src="images/destinations/galle.jpg" alt="Ride Lanka Cabs Taxi Service in Galle" class="area-img">
+            <div class="area-overlay"><h3>Galle</h3><span>Explore City →</span></div>
+        </a>
+        <a href="matara.html" class="area-card">
+            <img src="images/destinations/matara.jpg" alt="Ride Lanka Cabs Taxi Service in Matara" class="area-img">
+            <div class="area-overlay"><h3>Matara</h3><span>Explore City →</span></div>
+        </a>
+        <a href="kataragama.html" class="area-card">
+            <img src="images/destinations/kataragama.jpg" alt="Ride Lanka Cabs Taxi Service in Kataragama" class="area-img">
+            <div class="area-overlay"><h3>Kataragama</h3><span>Explore City →</span></div>
+        </a>
+        <a href="ella.html" class="area-card">
+            <img src="images/destinations/ella.jpg" alt="Ride Lanka Cabs Taxi Service in Ella" class="area-img">
+            <div class="area-overlay"><h3>Ella</h3><span>Explore City →</span></div>
+        </a>
+        <a href="nuwaraeliya.html" class="area-card">
+            <img src="images/destinations/nuwaraeliya.jpg" alt="Ride Lanka Cabs Taxi Service in Nuwara Eliya" class="area-img">
+            <div class="area-overlay"><h3>Nuwara Eliya</h3><span>Explore City →</span></div>
+        </a>
+        <a href="kandy.html" class="area-card">
+            <img src="images/destinations/kandy.jpg" alt="Ride Lanka Cabs Taxi Service in Kandy" class="area-img">
+            <div class="area-overlay"><h3>Kandy</h3><span>Explore City →</span></div>
+        </a>
+        <a href="matale.html" class="area-card">
+            <img src="images/destinations/matale.jpg" alt="Ride Lanka Cabs Taxi Service in Matale" class="area-img">
+            <div class="area-overlay"><h3>Matale</h3><span>Explore City →</span></div>
+        </a>
+        <a href="dambulla.html" class="area-card">
+            <img src="images/destinations/dambulla.jpg" alt="Ride Lanka Cabs Taxi Service in Dambulla" class="area-img">
+            <div class="area-overlay"><h3>Dambulla</h3><span>Explore City →</span></div>
+        </a>
+        <a href="sigiriya.html" class="area-card">
+            <img src="images/destinations/sigiriya.jpg" alt="Ride Lanka Cabs Taxi Service in Sigiriya" class="area-img">
+            <div class="area-overlay"><h3>Sigiriya</h3><span>Explore City →</span></div>
+        </a>
+        <a href="anuradhapura.html" class="area-card">
+            <img src="images/destinations/anuradhapura.jpg" alt="Ride Lanka Cabs Taxi Service in Anuradhapura" class="area-img">
+            <div class="area-overlay"><h3>Anuradhapura</h3><span>Explore City →</span></div>
+        </a>
+        <a href="jaffna.html" class="area-card">
+            <img src="images/destinations/jaffna.jpg" alt="Ride Lanka Cabs Taxi Service in Jaffna" class="area-img">
+            <div class="area-overlay"><h3>Jaffna</h3><span>Explore City →</span></div>
+        </a>
+        <a href="trincomalee.html" class="area-card">
+            <img src="images/destinations/trincomalee.jpg" alt="Ride Lanka Cabs Taxi Service in Trincomalee" class="area-img">
+            <div class="area-overlay"><h3>Trincomalee</h3><span>Explore City →</span></div>
+        </a>
+        <a href="arugambay.html" class="area-card">
+            <img src="images/destinations/arugambay.jpg" alt="Ride Lanka Cabs Taxi Service in Arugam Bay" class="area-img">
+            <div class="area-overlay"><h3>Arugam Bay</h3><span>Explore City →</span></div>
+        </a>
+        <a href="polonnaruwa.html" class="area-card">
+            <img src="images/destinations/polonnaruwa.jpg" alt="Ride Lanka Cabs Taxi Service in Polonnaruwa" class="area-img">
+            <div class="area-overlay"><h3>Polonnaruwa</h3><span>Explore City →</span></div>
+        </a>
+    </div>
+</section>
     <!-- ==========================================
          NEW MODERN CUSTOMER REVIEWS SECTION
          ========================================== -->
