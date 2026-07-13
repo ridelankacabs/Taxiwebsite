@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ================= SEO OPTIMIZATION ================= -->
+    <title>Premium Car Hire Service Sri Lanka | Ride Lanka Cabs</title>
+    <meta name="description" content="Affordable and reliable private car hire service in Sri Lanka with professional drivers. Premium A/C cars, micro, sedans, and SUVs for round tours and corporate travel. Book 24/7.">
+    <meta name="keywords" content="car hire sri lanka, rent a car with driver sri lanka, ride lanka cabs,wedding car, car for hire, luxury car rental colombo, private driver sri lanka, budget car hire, wedding cars sri lanka, suzuki wagon r rental, alto rental, prius hire sri lanka, suv rental sri lanka">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.ridelankacabs.com/service-car-hire.html">
+    
+    <!-- Open Graph / Facebook SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Premium Car Hire Service Sri Lanka | Ride Lanka Cabs">
+    <meta property="og:description" content="Enjoy luxury, safety, and ultimate comfort across Sri Lanka with our top-rated executive car hire solutions driven by professionals.">
+    <meta property="og:image" content="https://www.ridelankacabs.com/images/services/car_hire.jpg">
+    <meta property="og:url" content="https://www.ridelankacabs.com/service-car-hire.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon/favicon.png">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QET0JS18ES"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QET0JS18ES');
+    </script>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0B2C5F;
+            --accent: #D4AF37;
+            --text-dark: #1e293b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+        }
+
+        /* Hero Layout */
+        .service-hero {
+            background: linear-gradient(rgba(11, 44, 95, 0.85), rgba(6, 25, 56, 0.9)), url('images/services/car_hire.jpg') no-repeat center/cover;
+            padding: 90px 20px;
+            color: var(--white);
+            text-align: center;
+        }
+        .service-hero h1 { font-size: 2.6rem; font-weight: 800; margin-bottom: 15px; }
+        .service-hero h1 span { color: var(--accent); }
+        .service-hero p { font-size: 1.1rem; max-width: 600px; margin: 0 auto; color: #cbd5e1; }
+
+        /* Overview Section */
+        .detail-section { padding: 70px 20px; background: var(--white); }
+        .section-max { max-width: 1200px; margin: 0 auto; }
+        .overview-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+        .overview-text h2 { color: var(--primary); font-size: 2rem; font-weight: 800; margin-bottom: 20px; }
+        .overview-text p { color: #555; line-height: 1.7; font-size: 1rem; margin-bottom: 15px; }
+        .overview-img img { width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+
+        /* Key Features Grid */
+        .features-section { padding: 70px 20px; background: var(--bg-light); text-align: center; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 40px; }
+        .feature-card { background: var(--white); padding: 30px 20px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.03); border: 1px solid #e2e8f0; transition: all 0.3s ease; }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(11,44,95,0.08); }
+        .feature-card i { font-size: 2.2rem; color: var(--accent); margin-bottom: 15px; }
+        .feature-card h3 { color: var(--primary); font-size: 1.2rem; margin-bottom: 10px; font-weight: 700; }
+        .feature-card p { color: #666; font-size: 0.92rem; line-height: 1.5; }
+
+        /* Fleet Section style */
+        .fleet-section { padding: 70px 20px; background: var(--white); text-align: center; }
+        .fleet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; margin-top: 40px; }
+        .fleet-card { background: var(--white); border-radius: 14px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; text-align: left; transition: all 0.3s ease; }
+        .fleet-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+        .fleet-img { height: 180px; position: relative; }
+        .fleet-img img { width: 100%; height: 100%; object-fit: cover; }
+        .fleet-info { padding: 20px; }
+        .fleet-info h3 { color: var(--primary); font-size: 1.25rem; margin-bottom: 5px; font-weight: 700; }
+        .fleet-sub { color: #D4AF37; font-weight: 600; font-size: 0.95rem; margin-bottom: 12px; }
+        .fleet-specs { display: flex; justify-content: space-between; margin-bottom: 20px; color: #666; font-size: 0.85rem; border-top: 1px solid #edf2f7; border-bottom: 1px solid #edf2f7; padding: 10px 0; }
+        .fleet-specs span { display: flex; align-items: center; gap: 4px; }
+        .fleet-specs i { color: var(--primary); }
+        
+        .btn-action-group { display: flex; gap: 10px; }
+        .btn-act { flex: 1; padding: 10px; text-align: center; text-decoration: none; font-weight: 700; border-radius: 6px; font-size: 0.88rem; transition: all 0.3s; }
+        .btn-act-gold { background: var(--accent); color: var(--primary); }
+        .btn-act-gold:hover { background: var(--primary); color: var(--white); }
+        .btn-act-outline { border: 2px solid var(--primary); color: var(--primary); background: transparent; }
+        .btn-act-outline:hover { background: var(--primary); color: var(--white); }
+
+        /* Need Something Else Section (WHITE BACKGROUND UPDATED) */
+        .else-section { padding: 70px 20px; background: var(--white); border-top: 1px solid #e2e8f0; text-align: center; }
+        .else-content h2 { color: var(--primary); font-size: 2.2rem; font-weight: 800; margin-bottom: 15px; }
+        .else-content p { max-width: 650px; margin: 0 auto 30px auto; color: #555; font-size: 1.05rem; line-height: 1.6; }
+        .btn-else-grp { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn-else { padding: 12px 30px; border-radius: 6px; font-weight: 700; text-decoration: none; transition: 0.3s; display: inline-flex; align-items: center; gap: 10px; }
+        .btn-else-gold { background: var(--accent); color: var(--primary); box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); }
+        .btn-else-gold:hover { background: var(--primary); color: var(--white); box-shadow: 0 4px 15px rgba(11, 44, 95, 0.3); }
+        .btn-else-outline { border: 2px solid var(--primary); color: var(--primary); }
+        .btn-else-outline:hover { background: var(--primary); color: var(--white); }
+
+        /* STICKY FLOATING BUTTONS & BACK TO TOP */
+        .floating-contact-wrapper { position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 99999; }
+        .contact-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; color: white; text-decoration: none; box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .phone-btn { background-color: #0B2C5F; animation: pulseAnimation 2s infinite; }
+        .phone-btn:hover { background-color: #D4AF37; color: #061938; transform: scale(1.1); }
+        .whatsapp-btn { background-color: #25D366; animation: wobbleAnimation 2.5s infinite ease-in-out; }
+        .whatsapp-btn:hover { background-color: #128C7E; transform: scale(1.1); }
+        
+        /* Back to Top Button style */
+        .back-to-top-btn { background-color: #718096; color: white; cursor: pointer; display: none; visibility: hidden; opacity: 0; transition: all 0.3s ease; }
+        .back-to-top-btn.show { display: flex; visibility: visible; opacity: 1; }
+        .back-to-top-btn:hover { background-color: var(--primary); transform: translateY(-3px); }
+
+        @keyframes wobbleAnimation {
+            0%, 100% { transform: rotate(0) scale(1); }
+            15% { transform: rotate(-15deg) scale(1.05); }
+            30% { transform: rotate(13deg) scale(1.05); }
+            45% { transform: rotate(-10deg) scale(1.05); }
+            60% { transform: rotate(7deg) scale(1.05); }
+            75% { transform: rotate(0) scale(1.05); }
+        }
+        @keyframes pulseAnimation {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(11, 44, 95, 0.5); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(11, 44, 95, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(11, 44, 95, 0); }
+        }
+
+        @media (max-width: 768px) {
+            .overview-grid { grid-template-columns: 1fr; }
+            .service-hero h1 { font-size: 2rem; }
+            .floating-contact-wrapper { bottom: 20px; right: 20px; gap: 10px; }
+            .contact-btn { width: 46px; height: 46px; font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER AREA -->
+    <header>
+        <div class="navbar">
+            <div class="logo"><img src="images/logo/logo.png" alt="Ride Lanka Cabs Logo"></div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="fleet.html">Our Fleet</a>
+                <a href="contact.html">Contact</a>
+                <a href="booking.html" class="btn-book-nav">Book Your Ride</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="service-hero">
+        <div class="section-max">
+            <h1>Premium <span>Car Hire</span> Service</h1>
+            <p>Enjoy luxury, safety, and ultimate comfort across Sri Lanka with our top-rated executive car hire solutions driven by professionals.</p>
+        </div>
+    </section>
+
+    <!-- OVERVIEW SECTION -->
+    <section class="detail-section">
+        <div class="section-max overview-grid">
+            <div class="overview-text">
+                <h2>Car Hire Service Overview</h2>
+                <p>Ride Lanka Cabs offers premier private car hire services tailored to fulfill your personal, tourist, and business transit requirements across Sri Lanka. Whether you require a comfortable sedan for a swift cross-city meeting, an economical hatchback for running daily local errands, or a premium hybrid car for an extended vacation, we provide pristine, well-maintained vehicles.</p>
+                <p>We pride ourselves on removing travel stress entirely. Forget navigating hectic city traffic or plotting complex routes. Every single ride comes accompanied by a highly trained, background-verified, and extremely courteous professional chauffeur committed to ensuring your safety and total comfort from pickup right up to your final destination.</p>
+                <a href="booking.html?service=CarHire" class="btn-else btn-else-gold" style="margin-top:10px;">Reserve A Car Now</a>
+            </div>
+            <div class="overview-img">
+                <img src="images/services/car_hire.jpg" alt="Ride Lanka Car Hire Fleet Service">
+            </div>
+        </div>
+    </section>
+
+    <!-- KEY FEATURES SECTION -->
+    <section class="features-section">
+        <div class="section-max">
+            <span style="color: var(--accent); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; display: block; margin-bottom: 5px;">Why Choose Us</span>
+            <h2>Key Features of Our Service</h2>
+            <div style="width: 50px; height: 3px; background: var(--accent); margin: 0 auto 40px auto;"></div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-snowflake"></i>
+                    <h3>Full Climate Control</h3>
+                    <p>Every single sedan and premium car in our fleet features optimal, fully adjustable A/C to keep you beautifully cool under the Sri Lankan tropical heat.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Professional Drivers</h3>
+                    <p>Highly seasoned, courteous, English-speaking tourist chauffeurs who prioritize your safety, comfort, and absolute punctuality above all else.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-tags"></i>
+                    <h3>Transparent Pricing</h3>
+                    <p>No hidden booking charges, unexpected toll surprises, or dynamic surge rates. The competitive quote you receive is exactly what you pay.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Dispatch Support</h3>
+                    <p>Our client support and dispatch tracking network runs around the clock to flawlessly facilitate late-night requests and emergency airport drops.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR FLEET (UPDATED WITH ALL RELEVANT CARS) -->
+    <section class="fleet-section">
+        <div class="section-max">
+            <span style="color: var(--accent); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; display: block; margin-bottom: 5px;">Available Vehicles</span>
+            <h2>Explore Our Cars Fleet</h2>
+            <div style="width: 50px; height: 3px; background: var(--accent); margin: 0 auto 40px auto;"></div>
+
+            <div class="fleet-grid">
+                <!-- 1. Mini Car -->
+                <div class="fleet-card">
+                    <div class="fleet-img">
+                        <img src="images/fleet/wagonr.jpg" alt="Mini Car Wagon R - Ride Lanka Cabs">
+                    </div>
+                    <div class="fleet-info">
+                        <h3>Mini Car</h3>
+                        <div class="fleet-sub">Wagon R</div>
+                        <p style="color:#666; font-size:0.88rem; margin-bottom:15px; line-height:1.5;">Fuel-efficient and surprisingly spacious compact option, ideal for city runs and budget travels.</p>
+                        <div class="fleet-specs">
+                            <span><i class="fas fa-user"></i> 4 Seats</span>
+                            <span><i class="fas fa-suitcase"></i> 2 Bags</span>
+                            <span><i class="fas fa-wind"></i> Full A/C</span>
+                        </div>
+                        <div class="btn-action-group">
+                            <a href="booking.html?vehicle=WagonR" class="btn-act btn-act-gold">Book Now</a>
+                            <a href="contact.html" class="btn-act btn-act-outline">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Micro -->
+                <div class="fleet-card">
+                    <div class="fleet-img">
+                        <img src="images/fleet/alto.jpg" alt="Micro Alto - Ride Lanka Cabs">
+                    </div>
+                    <div class="fleet-info">
+                        <h3>Micro</h3>
+                        <div class="fleet-sub">Alto</div>
+                        <p style="color:#666; font-size:0.88rem; margin-bottom:15px; line-height:1.5;">Highly economical, super compact drive perfectly optimized for fast point-to-point urban commuting.</p>
+                        <div class="fleet-specs">
+                            <span><i class="fas fa-user"></i> 3 Seats</span>
+                            <span><i class="fas fa-suitcase"></i> 1 Bag</span>
+                            <span><i class="fas fa-wind"></i> Full A/C</span>
+                        </div>
+                        <div class="btn-action-group">
+                            <a href="booking.html?vehicle=Alto" class="btn-act btn-act-gold">Book Now</a>
+                            <a href="contact.html" class="btn-act btn-act-outline">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Sedan -->
+                <div class="fleet-card">
+                    <div class="fleet-img">
+                        <img src="images/fleet/sedan.jpg" alt="Premium Sedan Prius Axio Premio - Ride Lanka Cabs">
+                    </div>
+                    <div class="fleet-info">
+                        <h3>Sedan</h3>
+                        <div class="fleet-sub">Prius / Axio / Premio</div>
+                        <p style="color:#666; font-size:0.88rem; margin-bottom:15px; line-height:1.5;">Premium executive comfort, excellent legroom, and absolute smooth rides for long tour journeys.</p>
+                        <div class="fleet-specs">
+                            <span><i class="fas fa-user"></i> 4 Seats</span>
+                            <span><i class="fas fa-suitcase"></i> 3 Bags</span>
+                            <span><i class="fas fa-wind"></i> Dual A/C</span>
+                        </div>
+                        <div class="btn-action-group">
+                            <a href="booking.html?vehicle=Sedan" class="btn-act btn-act-gold">Book Now</a>
+                            <a href="contact.html" class="btn-act btn-act-outline">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. SUV -->
+                <div class="fleet-card">
+                    <div class="fleet-img">
+                        <img src="images/fleet/suv.jpg" alt="Luxury SUV - Ride Lanka Cabs">
+                    </div>
+                    <div class="fleet-info">
+                        <h3>SUV</h3>
+                        <div class="fleet-sub">Available Luxury Models</div>
+                        <p style="color:#666; font-size:0.88rem; margin-bottom:15px; line-height:1.5;">Premium high-clearance luxury vehicles providing utmost safety, command, and premium style.</p>
+                        <div class="fleet-specs">
+                            <span><i class="fas fa-user"></i> 4 Seats</span>
+                            <span><i class="fas fa-suitcase"></i> 4 Bags</span>
+                            <span><i class="fas fa-wind"></i> Luxury A/C</span>
+                        </div>
+                        <div class="btn-action-group">
+                            <a href="booking.html?vehicle=SUV" class="btn-act btn-act-gold">Book Now</a>
+                            <a href="contact.html" class="btn-act btn-act-outline">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEED SOMETHING ELSE SECTION (UPDATED TO WHITE BACKGROUND) -->
+    <section class="else-section">
+        <div class="section-max else-content">
+            <h2>Need Something Else?</h2>
+            <p>If you are traveling with a large group of family, carrying heavy surfboards/luggage, or planning a massive corporate crew shift, our standard cars fleet might not fit. Explore our specialized, ultra-spacious group transportation fleet options.</p>
+            <div class="btn-else-grp">
+                <a href="services.html" class="btn-else btn-else-gold"><i class="fas fa-van-shuttle"></i> View Van & Bus Services</a>
+                <a href="contact.html" class="btn-else btn-else-outline"><i class="fas fa-comment-dots"></i> Request Custom Package</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREMIUM FOOTER AREA -->
+    <footer style="background-color: #061938; color: #ffffff; padding: 60px 20px 20px 20px; font-family: sans-serif; border-top: 4px solid #D4AF37;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
+            <div style="flex: 1; min-width: 280px; display: flex; flex-direction: column; align-items: center; text-align: center; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 20px;">
+                <div style="margin-bottom: 15px; display: flex; justify-content: center; width: 100%;">
+                    <img src="images/logo/logo.png" alt="Ride Lanka Cabs" style="height: 110px; width: auto; object-fit: contain; display: block; margin: 0 auto;">
+                </div>
+                <h3 style="color: #ffffff; font-size: 1.7rem; font-weight: 700; margin: 0 0 12px 0; letter-spacing: 0.5px; width: 100%;">Ride Lanka Cabs</h3>
+                <p style="color: #a0aec0; font-size: 0.9rem; line-height: 1.6; margin: 0; max-width: 300px;">
+                    Your trusted travel partner for safe, reliable, and luxury transport solutions across Sri Lanka. Available 24/7.
+                </p>
+            </div>
+
+            <div style="flex: 2.5; min-width: 320px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+                <div style="display: flex; flex-direction: column; align-items: flex-start; text-align: left;">
+                    <h4 style="color: #D4AF37; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 20px 0; padding-bottom: 8px; border-bottom: 2px solid #D4AF37; display: inline-block;">Quick Links</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; width: 100%;">
+                        <li style="margin-bottom: 12px;"><a href="index.html" style="color: #a0aec0; text-decoration: none; font-size: 0.95rem;"><i class="fas fa-chevron-right" style="font-size: 0.75rem; margin-right: 10px; color: #D4AF37;"></i>Home</a></li>
+                        <li style="margin-bottom: 12px;"><a href="about.html" style="color: #a0aec0; text-decoration: none; font-size: 0.95rem;"><i class="fas fa-chevron-right" style="font-size: 0.75rem; margin-right: 10px; color: #D4AF37;"></i>About Us</a></li>
+                        <li style="margin-bottom: 12px;"><a href="fleet.html" style="color: #a0aec0; text-decoration: none; font-size: 0.95rem;"><i class="fas fa-chevron-right" style="font-size: 0.75rem; margin-right: 10px; color: #D4AF37;"></i>Our Fleet</a></li>
+                        <li style="margin-bottom: 12px;"><a href="contact.html" style="color: #a0aec0; text-decoration: none; font-size: 0.95rem;"><i class="fas fa-chevron-right" style="font-size: 0.75rem; margin-right: 10px; color: #D4AF37;"></i>Contact Us</a></li>
+                        <li style="margin-bottom: 12px;"><a href="booking.html" style="color: #a0aec0; text-decoration: none; font-size: 0.95rem;"><i class="fas fa-chevron-right" style="font-size: 0.75rem; margin-right: 10px; color: #D4AF37;"></i>Book Online</a></li>
+                    </ul>
+                </div>
+
+                <div style="display: flex; flex-direction: column; align-items: flex-start; text-align: left;">
+                    <h4 style="color: #D4AF37; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 20px 0; padding-bottom: 8px; border-bottom: 2px solid #D4AF37; display: inline-block;">Our Services</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; width: 100%;">
+                        <li style="margin-bottom: 12px;"><a href="services.html" style="color: #a0aec0; text-decoration: none; font-size: 0.95rem;"><i class="fas fa-car" style="font-size: 0.8rem; margin-right: 10px; color: #D4AF37;"></i>Airport Transfers</a></li>
+                        <li style="margin-bottom: 12px;"><a href="services.html" style="color: #a0aec0; text-decoration: none; font-size: 0.95rem;"><i class="fas fa-car" style="font-size: 0.8rem; margin-right: 10px; color: #D4AF37;"></i>Round Tours</a></li>
+                        <li style="margin-bottom: 12px;"><a href="services.html" style="color: #a0aec0; text-decoration: none; font-size: 0.95rem;"><i class="fas fa-car" style="font-size: 0.8rem; margin-right: 10px; color: #D4AF37;"></i>Wedding Hire</a></li>
+                        <li style="margin-bottom: 12px;"><a href="services.html" style="color: #a0aec0; text-decoration: none; font-size: 0.95rem;"><i class="fas fa-car" style="font-size: 0.8rem; margin-right: 10px; color: #D4AF37;"></i>Corporate Travel</a></li>
+                        <li style="margin-bottom: 12px;"><a href="services.html" style="color: #a0aec0; text-decoration: none; font-size: 0.95rem;"><i class="fas fa-car" style="font-size: 0.8rem; margin-right: 10px; color: #D4AF37;"></i>Custom Rides</a></li>
+                    </ul>
+                </div>
+
+                <div style="display: flex; flex-direction: column; align-items: flex-start; text-align: left;">
+                    <h4 style="color: #D4AF37; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 20px 0; padding-bottom: 8px; border-bottom: 2px solid #D4AF37; display: inline-block;">Get In Touch</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; color: #a0aec0; font-size: 0.95rem; width: 100%;">
+                        <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px;">
+                            <i class="fas fa-map-marker-alt" style="color: #D4AF37; margin-top: 4px;"></i>
+                            <span>No 76, Nagas handiya,<br>Galle road, Kalutara North.</span>
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-phone-alt" style="color: #D4AF37;"></i>
+                            <a href="tel:0767137478" style="color: #a0aec0; text-decoration: none;">0767137478</a>
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-envelope" style="color: #D4AF37;"></i>
+                            <a href="mailto:ridelankacabs@gmail.com" style="color: #a0aec0; text-decoration: none; word-break: break-all;">ridelankacabs@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div style="max-width: 1200px; margin: 40px auto 0 auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 0.85rem; color: #718096;">
+            <p style="margin: 0;">&copy; 2026 Ride Lanka Cabs. All Rights Reserved.</p>
+            <div style="display: flex; gap: 20px;">
+                <a href="terms.html" style="color: #a0aec0; text-decoration: none;">Terms & Conditions</a>
+                <a href="privacy.html" style="color: #a0aec0; text-decoration: none;">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- STICKY FLOATING CONTACT BUTTONS + BACK TO TOP -->
+    <div class="floating-contact-wrapper">
+        <!-- Back to Top Button (Call/WhatsApp වලට උඩින් පිහිටයි) -->
+        <button onclick="scrollToTop()" id="backToTopBtn" class="contact-btn back-to-top-btn" title="Go to Top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+        <!-- Phone Call Button -->
+        <a href="tel:+94767137478" class="contact-btn phone-btn" title="Call Us Now"><i class="fas fa-phone-alt"></i></a>
+        <!-- WhatsApp Chat Button -->
+        <a href="#" id="floatingWhatsAppBtn" target="_blank" class="contact-btn whatsapp-btn" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
+    <!-- JAVASCRIPT FOR WHATSAPP INQUIRY AND BACK TO TOP FUNCTION -->
+    <script>
+        // WhatsApp Configuration
+        (function() {
+            const targetNumber = "94767137478"; 
+            const inquiryText = "Hello Ride Lanka Cabs! I am looking for details and rates regarding the Car Hire Service. Can you please help me?";
+            const whatsappBtn = document.getElementById('floatingWhatsAppBtn');
+            if(whatsappBtn) {
+                whatsappBtn.href = `https://api.whatsapp.com/send?phone=${targetNumber}&text=${encodeURIComponent(inquiryText)}`;
+            }
+        })();
+
+        // Back to Top Button Logic
+        const backToTopBtn = document.getElementById("backToTopBtn");
+
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            // පිටුව මැදට හෝ පහළට යන විට බටන් එක පෙන්වයි (ප්‍රමාණය 300px දක්වා ස්ක්‍රෝල් වූ පසු)
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        }
+
+        function scrollToTop() {
+            // ඉතා සුන්දර ලෙස ඉහළට සෙමෙන් ගමන් කිරීම (Smooth Scroll)
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+    </script>
+</body>
+</html>
