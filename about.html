@@ -24,10 +24,10 @@
 
     <style>
         /* ==========================================
-           ADDITIONAL OVERLAY/INLINE STYLES FOR MOBILE NAV & BACK TO TOP
+           1. HAMBURGER MENU & MOBILE NAV STYLES
            ========================================== */
         
-        /* Mobile Hamburger Button Styling */
+        /* Mobile Hamburger Button එක සාමාන්‍ය Screen වලදී සඟවා තැබීම */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -38,21 +38,89 @@
             border: none;
             cursor: pointer;
             z-index: 10001;
+            padding: 0;
         }
 
+        /* ඉරි කෑලි 3 හැඩගැස්වීම */
         .menu-toggle span {
             display: block;
             height: 3px;
             width: 100%;
-            background-color: #ffffff; /* සුදු පැහැති ඉරි කෑලි 3 */
+            background-color: #ffffff; /* සුදු පැහැති ඉරි */
             border-radius: 3px;
             transition: all 0.3s ease-in-out;
         }
 
-        /* Back to Top Button Styling */
+        /* Mobile Screen (Screen width 768px හෝ ඊට අඩු) වලදී ක්‍රියාත්මක වන CSS */
+        @media (max-width: 768px) {
+            .navbar {
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15px 20px;
+            }
+
+            /* Hamburger Button එක Mobile වලදී පෙන්වීම */
+            .menu-toggle {
+                display: flex;
+            }
+
+            /* Navigation Menu එක Mobile වලදී සිරස් අතට හැඩගැස්වීම */
+            .navbar nav {
+                display: none; /* මුලින් මෙනු එක සඟවා තබයි */
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #061938; /* Header එකේ තද නිල් පැහැය */
+                padding: 20px 0;
+                box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+                z-index: 10000;
+                text-align: center;
+            }
+
+            /* Hamburger එක Click කළ විට පෙන්වීමට අවශ්‍ය '.active' Class එක */
+            .navbar nav.active {
+                display: flex;
+            }
+
+            /* Mobile Menu එක ඇතුළේ Links සකස් කිරීම */
+            .navbar nav a {
+                margin: 12px 0;
+                display: block;
+                font-size: 1.1rem;
+                color: #ffffff;
+                text-decoration: none;
+            }
+
+            /* Nav Book Button එක Mobile වලට ගැලපෙන සේ සකස් කිරීම */
+            .navbar nav .btn-book-nav {
+                display: inline-block;
+                margin: 10px auto;
+                padding: 10px 25px;
+                width: auto;
+            }
+        }
+
+        /* Hamburger Button එක 'X' එකක් බවට පත්වන Animation එක */
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* ==========================================
+           2. BACK TO TOP BUTTON STYLES
+           ========================================== */
         .back-to-top {
             position: fixed;
-            bottom: 160px; /* Floating Buttons වලට ඉහළින් පෙනීමට */
+            bottom: 160px; /* Floating Contact Buttons වලට ඉහළින් පෙනීමට */
             right: 25px;
             width: 50px;
             height: 50px;
@@ -73,6 +141,7 @@
             outline: none;
         }
 
+        /* Button එක සක්‍රීය වූ විට පෙන්වීම */
         .back-to-top.show {
             opacity: 1;
             visibility: visible;
@@ -84,35 +153,7 @@
             transform: translateY(-5px);
         }
 
-        /* Responsive Navbar Layout adjustments */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex; /* Mobile වලදී ඉරි කෑලි 3 පෙන්වීමට */
-            }
-
-            .navbar nav {
-                display: none; /* මුලින් මෙනු එක සඟවා තැබීමට */
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: #061938;
-                padding: 20px;
-                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-                z-index: 10000;
-            }
-
-            .navbar nav.active {
-                display: flex; /* Active වූ විට මෙනු එක පෙන්වීමට */
-            }
-
-            .navbar nav a {
-                margin: 10px 0;
-                display: block;
-                text-align: center;
-            }
-            
+        @media (max-width: 480px) {
             .back-to-top {
                 bottom: 140px;
                 right: 20px;
@@ -120,17 +161,6 @@
                 height: 45px;
                 font-size: 18px;
             }
-        }
-
-        /* Hamburger Animation to 'X' when active */
-        .menu-toggle.active span:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
-        }
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-        .menu-toggle.active span:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
         }
     </style>
 </head>
@@ -142,14 +172,15 @@
             <div class="logo">
                 <img src="images/logo/logo.png" alt="Ride Lanka Cabs Logo">
             </div>
-            
-            <!-- Hamburger Menu Button -->
+
+            <!-- Mobile Hamburger Menu Button එක (ඉරි කෑලි 3) -->
             <button class="menu-toggle" id="mobileMenuBtn" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
+            <!-- Navigation Links -->
             <nav id="navMenu">
                 <a href="index.html">Home</a>
                 <a href="about.html">About Us</a>
@@ -439,7 +470,7 @@
     </footer>
 
     <!-- ==========================================
-         8. BACK TO TOP BUTTON
+         8. BACK TO TOP BUTTON (HTML)
          ========================================== -->
     <button class="back-to-top" id="backToTopBtn" title="Go to Top">
         <i class="fas fa-chevron-up"></i>
@@ -548,7 +579,7 @@
     })();
 
     // ==========================================
-    // BACK TO TOP BUTTON LOGIC
+    // BACK TO TOP BUTTON LOGIC (JS)
     // ==========================================
     const backToTopBtn = document.getElementById('backToTopBtn');
 
@@ -568,7 +599,7 @@
     });
 
     // ==========================================
-    // MOBILE MENU HAMBURGER LOGIC
+    // MOBILE MENU HAMBURGER LOGIC (JS)
     // ==========================================
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const navMenu = document.getElementById('navMenu');
@@ -578,7 +609,7 @@
         navMenu.classList.toggle('active');
     });
 
-    // Menu එකෙන් පිටත Click කළ විට මෙනු එක සඟවා තැබීමට
+    // Menu එකෙන් පිටත Click කළ විට මෙනු එක ඉබේම වැසීමට (Close)
     document.addEventListener('click', (event) => {
         if (!mobileMenuBtn.contains(event.target) && !navMenu.contains(event.target)) {
             mobileMenuBtn.classList.remove('active');
