@@ -87,10 +87,121 @@
         .support-sidebar h3 { color: var(--accent); margin-top: 0; font-size: 1.5rem; font-weight: 700; }
         .support-sidebar p { color: #cbd5e1; font-size: 0.95rem; margin-bottom: 25px; line-height: 1.6; }
 
+        /* Hamburger Menu Styling */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Back to Top Button Styling */
+        .back-to-top {
+            position: fixed;
+            bottom: 165px; /* Floating contact buttons වලින් ඉහලින් පෙන්වීමට */
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
         @media (max-width: 768px) { 
             .about-grid, .faq-layout { grid-template-columns: 1fr; } 
             .loc-hero h1 { font-size: 2.2rem; }
             .about-grid img { height: auto; }
+
+            /* Mobile Navigation Styling */
+            .menu-toggle {
+                display: flex;
+                order: 2;
+            }
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15px 20px;
+                position: relative;
+            }
+            .logo {
+                order: 1;
+            }
+            .navbar nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                padding: 20px;
+                z-index: 1000;
+                gap: 15px;
+                box-sizing: border-box;
+            }
+            .navbar nav.active {
+                display: flex;
+            }
+            .navbar nav a {
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+            .btn-book-nav {
+                display: inline-block;
+                width: auto !important;
+                margin: 0 auto;
+            }
+            /* Toggle Animation */
+            .menu-toggle.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+            .back-to-top {
+                bottom: 150px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
         }
     </style>
 </head>
@@ -100,6 +211,14 @@
     <header>
         <div class="navbar">
             <div class="logo"><img src="images/logo/logo.png" alt="Ride Lanka Logo"></div>
+            
+            <!-- Hamburger Menu Trigger -->
+            <button class="menu-toggle" aria-label="Toggle Navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
             <nav>
                 <a href="index.html">Home</a>
                 <a href="about.html">About Us</a>
@@ -311,6 +430,11 @@
         </div>
     </footer>
 
+    <!-- BACK TO TOP BUTTON -->
+    <div class="back-to-top" id="backToTopBtn" title="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
     <!-- STICKY FLOATING CONTACT BUTTONS -->
     <div class="floating-contact-wrapper">
         <a href="tel:+94767137478" class="contact-btn phone-btn" title="Call Us Now">
@@ -383,11 +507,50 @@
 
     <script>
         (function() {
+            // WhatsApp Link setup
             const targetNumber = "94767137478"; 
             const inquiryText = "Hello Ride Lanka Cabs! I would like to inquire about booking a vehicle from Ella. Could you please help me?";
             const whatsappBtn = document.getElementById('floatingWhatsAppBtn');
             if(whatsappBtn) {
                 whatsappBtn.href = `https://api.whatsapp.com/send?phone=${targetNumber}&text=${encodeURIComponent(inquiryText)}`;
+            }
+
+            // Mobile Hamburger Menu Action
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navbarNav = document.querySelector('.navbar nav');
+
+            if(menuToggle && navbarNav) {
+                menuToggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    navbarNav.classList.toggle('active');
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!menuToggle.contains(e.target) && !navbarNav.contains(e.target)) {
+                        menuToggle.classList.remove('active');
+                        navbarNav.classList.remove('active');
+                    }
+                });
+            }
+
+            // Back to Top Button Action
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            if(backToTopBtn) {
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        backToTopBtn.classList.add('show');
+                    } else {
+                        backToTopBtn.classList.remove('show');
+                    }
+                });
+
+                backToTopBtn.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
             }
         })();
     </script>
