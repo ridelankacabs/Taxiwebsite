@@ -4,13 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms & Conditions - Ride Lanka Cabs</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-<!-- Favicon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="images/favicon/favicon.png">
 
+    <style>
+        :root { --primary: #0B2C5F; --accent: #D4AF37; --white: #ffffff; }
+        
+        /* Header & Nav */
+        header { position: relative; background-color: var(--white); z-index: 1000; border-bottom: 1px solid #eee; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; max-width: 1200px; margin: 0 auto; }
+        .logo img { height: 50px; }
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; background: none; border: none; padding: 5px; }
+        .menu-toggle span { width: 25px; height: 3px; background: var(--primary); transition: 0.3s; }
+        nav { display: flex; gap: 20px; }
+        nav a { text-decoration: none; color: var(--primary); font-weight: 700; transition: 0.3s; }
+        nav a:hover { color: var(--accent); }
+
+        /* Back to Top */
+        .back-to-top { position: fixed; bottom: 30px; right: 25px; background: var(--primary); color: var(--white); width: 45px; height: 45px; border-radius: 50%; display: none; align-items: center; justify-content: center; cursor: pointer; z-index: 9999; border: 2px solid var(--accent); }
+        .back-to-top.active { display: flex; }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--white); flex-direction: column; padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+            nav.active { display: flex; }
+            nav a { padding: 10px 0; border-bottom: 1px solid #eee; }
+        }
+    </style>
 </head>
 <body style="margin: 0; padding: 0; font-family: sans-serif; background-color: #f8f9fa; color: #333; line-height: 1.7;">
+
+    <!-- HEADER AREA -->
+    <header>
+        <div class="navbar">
+            <div class="logo"><img src="images/logo/logo.png" alt="Ride Lanka Logo"></div>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span><span></span><span></span>
+            </button>
+            <nav id="navMenu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="fleet.html">Our Fleet</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
 
     <!-- Subpage Header -->
     <div style="background-color: #0B2C5F; padding: 60px 20px; text-align: center; color: #ffffff;">
@@ -42,5 +81,24 @@
         </div>
     </div>
 
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Hamburger Menu Logic
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => { navMenu.classList.toggle('active'); });
+
+        // Back to Top Logic
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) { backToTop.classList.add('active'); } 
+            else { backToTop.classList.remove('active'); }
+        });
+        backToTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    </script>
 </body>
 </html>

@@ -46,6 +46,41 @@
         .btn-outline { border: 2px solid var(--white); color: var(--white); background: transparent; }
         .btn-outline:hover { background: var(--white); color: var(--primary); }
 
+        /* Header & Navigation Integration */
+        header {
+            position: relative;
+            z-index: 1000;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Mobile Menu Button (Hamburger) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            transition: all 0.3s ease-in-out;
+            border-radius: 2px;
+        }
+
         /* Hero Section */
         .loc-hero { 
             position: relative; 
@@ -87,9 +122,88 @@
         .support-sidebar h3 { color: var(--accent); margin-top: 0; font-size: 1.5rem; font-weight: 700; }
         .support-sidebar p { color: #cbd5e1; font-size: 0.95rem; margin-bottom: 25px; line-height: 1.6; }
 
+        /* Back to Top Button Styling */
+        .back-to-top {
+            position: fixed;
+            bottom: 165px; /* Floaters වලට උඩින් රැඳෙන පරිදි */
+            right: 25px;
+            width: 45px;
+            height: 45px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            border: 2px solid var(--accent);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
         @media (max-width: 768px) { 
             .about-grid, .faq-layout { grid-template-columns: 1fr; } 
             .loc-hero h1 { font-size: 2.2rem; }
+
+            /* Mobile Menu Active / Hamburger functionality */
+            .menu-toggle {
+                display: flex;
+            }
+            nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            nav.active {
+                display: flex;
+            }
+            nav a {
+                margin: 10px 0;
+                text-align: center;
+            }
+            .btn-book-nav {
+                display: inline-block;
+                margin-top: 10px;
+            }
+
+            /* Hamburger animation on click */
+            .menu-toggle.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+            
+            .back-to-top {
+                bottom: 145px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -99,7 +213,13 @@
     <header>
         <div class="navbar">
             <div class="logo"><img src="images/logo/logo.png" alt="Ride Lanka Logo"></div>
-            <nav>
+            <!-- Hamburger button for mobile devices -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="navMenu">
                 <a href="index.html">Home</a>
                 <a href="about.html">About Us</a>
                 <a href="services.html">Services</a>
@@ -307,6 +427,11 @@
         </div>
     </footer>
 
+    <!-- BACK TO TOP BUTTON -->
+    <button class="back-to-top" id="backToTopBtn" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <!-- STICKY FLOATING CONTACT BUTTONS -->
     <div class="floating-contact-wrapper">
         <a href="tel:+94767137478" class="contact-btn phone-btn" title="Call Us Now">
@@ -379,11 +504,46 @@
 
     <script>
         (function() {
+            // WhatsApp Link integration
             const targetNumber = "94767137478"; 
             const inquiryText = "Hello Ride Lanka Cabs! I would like to inquire about booking a vehicle. Could you please help me?";
             const whatsappBtn = document.getElementById('floatingWhatsAppBtn');
             if(whatsappBtn) {
                 whatsappBtn.href = `https://api.whatsapp.com/send?phone=${targetNumber}&text=${encodeURIComponent(inquiryText)}`;
+            }
+
+            // 1. Back to Top Button Logic
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            });
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // 2. Mobile Hamburger Menu Toggle Logic
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            if(menuToggle && navMenu) {
+                menuToggle.addEventListener('click', () => {
+                    menuToggle.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
             }
         })();
     </script>

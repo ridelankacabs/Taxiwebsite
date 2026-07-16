@@ -46,7 +46,7 @@
         .btn-outline { border: 2px solid var(--white); color: var(--white); background: transparent; }
         .btn-outline:hover { background: var(--white); color: var(--primary); }
 
-        /* Hero Section (UPDATED FOR CUSTOM IMAGE) */
+        /* Hero Section */
         .loc-hero { 
             position: relative; 
             background: linear-gradient(rgba(11, 44, 95, 0.75), rgba(6, 25, 56, 0.8)), url('images/destinations/kalutara/kalutara-hero.jpg') no-repeat center/cover; 
@@ -87,10 +87,103 @@
         .support-sidebar h3 { color: var(--accent); margin-top: 0; font-size: 1.5rem; font-weight: 700; }
         .support-sidebar p { color: #cbd5e1; font-size: 0.95rem; margin-bottom: 25px; line-height: 1.6; }
 
+        /* Mobile Hamburger Menu Styles */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Back to Top Button Styles */
+        .back-to-top {
+            position: fixed;
+            bottom: 165px; /* Floating Buttons වලට ඉහලින් පෙනීමට */
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 99998;
+            border: 2px solid var(--accent);
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
         @media (max-width: 768px) { 
             .about-grid, .faq-layout { grid-template-columns: 1fr; } 
             .loc-hero h1 { font-size: 2.2rem; }
             .about-grid img { height: auto; }
+
+            /* Mobile Navigation Styling */
+            .menu-toggle {
+                display: flex;
+            }
+            .navbar nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                padding: 20px;
+                box-sizing: border-box;
+                z-index: 1000;
+            }
+            .navbar nav.active {
+                display: flex;
+            }
+            .navbar nav a {
+                margin: 10px 0;
+                text-align: center;
+            }
+            .back-to-top {
+                bottom: 150px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+            /* Hamburger Animation */
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 6px);
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -6px);
+            }
         }
     </style>
 </head>
@@ -100,7 +193,13 @@
     <header>
         <div class="navbar">
             <div class="logo"><img src="images/logo/logo.png" alt="Ride Lanka Logo"></div>
-            <nav>
+            <!-- Hamburger Menu Button -->
+            <button class="menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="navMenu">
                 <a href="index.html">Home</a>
                 <a href="about.html">About Us</a>
                 <a href="services.html">Services</a>
@@ -111,7 +210,7 @@
         </div>
     </header>
 
-    <!-- HERO SECTION (Hero image path is updated inside <style> tag on line 43) -->
+    <!-- HERO SECTION -->
     <section class="loc-hero">
         <div style="max-width: 1200px; margin: 0 auto;">
             <h1>Taxi & Hire Service in <span>Kalutara</span></h1>
@@ -133,7 +232,6 @@
                 <a href="booking.html" class="btn btn-primary" style="margin-top: 10px;"><i class="fas fa-car"></i> Reserve A Ride</a>
             </div>
             <div>
-                <!-- UPDATED ABOUT IMAGE PATH -->
                 <img src="images/destinations/kalutara/kalutara-about.jpg" alt="About Kalutara Private Tours - Ride Lanka Cabs">
             </div>
         </div>
@@ -178,7 +276,7 @@
         </div>
     </section>
 
-    <!-- READY TO EXPLORE CTA (Using the same custom hero banner for consistency) -->
+    <!-- READY TO EXPLORE CTA -->
     <section style="padding: 70px 20px; background: linear-gradient(rgba(6, 25, 56, 0.9), rgba(6, 25, 56, 0.95)), url('images/destinations/kalutara/kalutara-hero.jpg') no-repeat center/cover; color: #ffffff; text-align: center;">
         <div style="max-width: 1200px; margin: 0 auto;">
             <h2 style="font-size: 2.4rem; margin: 0 0 15px 0; font-weight: 800;">Ready to Explore Kalutara District?</h2>
@@ -190,7 +288,7 @@
         </div>
     </section>
 
-    <!-- HELP & SUPPORT / FAQ SECTION -->
+    <!-- HELP & SUPPORT FAQ SECTION -->
     <section class="support-faq">
         <div style="max-width: 1200px; margin: 0 auto;">
             <span style="color: #D4AF37; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; display: block; margin-bottom: 10px;">Help & Support</span>
@@ -213,7 +311,7 @@
                     </div>
                     <div class="faq-item">
                         <h4><i class="fas fa-question-circle"></i> Can I choose a specific vehicle for my family tour in Kalutara?</h4>
-                        <p>Absolutely! We have a diverse fleet ranging from budget-friendly cars and premium sedans to comfortable dual A/C passenger vans and mini buses.</p>
+                        <p>Absolutely! We have a diverse fleet ranging from budget-friendly cars and premium sedans to comfortable dual AC passenger vans and mini buses.</p>
                     </div>
                 </div>
 
@@ -312,6 +410,11 @@
         </div>
     </footer>
 
+    <!-- BACK TO TOP BUTTON -->
+    <button class="back-to-top" id="backToTopBtn" title="Back to Top" aria-label="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <!-- STICKY FLOATING CONTACT BUTTONS -->
     <div class="floating-contact-wrapper">
         <a href="tel:+94767137478" class="contact-btn phone-btn" title="Call Us Now">
@@ -389,6 +492,45 @@
             const whatsappBtn = document.getElementById('floatingWhatsAppBtn');
             if(whatsappBtn) {
                 whatsappBtn.href = `https://api.whatsapp.com/send?phone=${targetNumber}&text=${encodeURIComponent(inquiryText)}`;
+            }
+
+            // Mobile Menu Toggle Logic
+            const menuToggle = document.getElementById('mobileMenuToggle');
+            const navMenu = document.getElementById('navMenu');
+
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+
+                // Close menu when clicking on a link
+                const navLinks = navMenu.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    });
+                });
+            }
+
+            // Back to Top Button Logic
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            if (backToTopBtn) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 300) {
+                        backToTopBtn.classList.add('show');
+                    } else {
+                        backToTopBtn.classList.remove('show');
+                    }
+                });
+
+                backToTopBtn.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
             }
         })();
     </script>

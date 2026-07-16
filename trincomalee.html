@@ -36,6 +36,13 @@
             --white: #ffffff; 
         }
         
+        /* Header & Nav Updates */
+        header { position: relative; background-color: #ffffff; z-index: 1000; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; max-width: 1200px; margin: 0 auto; }
+        
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; background: none; border: none; padding: 5px; }
+        .menu-toggle span { width: 25px; height: 3px; background: var(--primary); transition: 0.3s; }
+        
         /* Buttons Components */
         .btn-grp { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 25px; }
         .btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 28px; font-weight: 700; border-radius: 8px; text-decoration: none; transition: all 0.3s; cursor: pointer; font-size: 0.95rem; }
@@ -87,10 +94,18 @@
         .support-sidebar h3 { color: var(--accent); margin-top: 0; font-size: 1.5rem; font-weight: 700; }
         .support-sidebar p { color: #cbd5e1; font-size: 0.95rem; margin-bottom: 25px; line-height: 1.6; }
 
+        /* Back to Top */
+        .back-to-top { position: fixed; bottom: 160px; right: 25px; background: var(--primary); color: var(--white); width: 45px; height: 45px; border-radius: 50%; display: none; align-items: center; justify-content: center; cursor: pointer; z-index: 9999; border: 2px solid var(--accent); }
+        .back-to-top.active { display: flex; }
+
         @media (max-width: 768px) { 
             .about-grid, .faq-layout { grid-template-columns: 1fr; } 
             .loc-hero h1 { font-size: 2.2rem; }
             .about-grid img { height: auto; }
+            .menu-toggle { display: flex; }
+            nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--white); flex-direction: column; padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+            nav.active { display: flex; }
+            nav a { padding: 10px 0; border-bottom: 1px solid #eee; }
         }
     </style>
 </head>
@@ -100,7 +115,10 @@
     <header>
         <div class="navbar">
             <div class="logo"><img src="images/logo/logo.png" alt="Ride Lanka Logo"></div>
-            <nav>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span><span></span><span></span>
+            </button>
+            <nav id="navMenu">
                 <a href="index.html">Home</a>
                 <a href="about.html">About Us</a>
                 <a href="services.html">Services</a>
@@ -321,6 +339,11 @@
         </a>
     </div>
 
+    <!-- BACK TO TOP BUTTON -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <style>
         .floating-contact-wrapper {
             position: fixed;
@@ -382,6 +405,27 @@
     </style>
 
     <script>
+        // Hamburger Menu & Back to Top Logic
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const backToTop = document.getElementById('backToTop');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
         (function() {
             const targetNumber = "94767137478"; 
             const inquiryText = "Hello Ride Lanka Cabs! I am interested in booking a ride or beach tour package in Trincomalee. Could you please give me more details?";
