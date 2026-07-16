@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QET0JS18ES"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QET0JS18ES"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-QET0JS18ES');
-</script>
+      gtag('config', 'G-QET0JS18ES');
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Your Ride - Ride Lanka Cabs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -101,7 +100,37 @@
         /* Navbar placeholder */
         .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .navbar nav a { text-decoration: none; color: #334155; margin-left: 20px; font-weight: 500; font-size: 0.9rem; }
-        .navbar nav a.btn-book-nav { background: #0B2C5F; color: #fff; padding: 8px 16px; border-radius: 6px; }
+
+        /* Floating Back to Top only style */
+        .floating-contact-wrapper {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .contact-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: none; /* JS control active */
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: all 0.3s;
+        }
+        .back-to-top-btn {
+            background-color: #0B2C5F;
+        }
+        .back-to-top-btn:hover {
+            background-color: #D4AF37;
+            transform: translateY(-2px);
+        }
 
         @media (max-width: 480px) {
             .grid-options { grid-template-columns: 1fr; gap: 8px; }
@@ -111,7 +140,7 @@
 </head>
 <body>
 
-    <!-- 1. HEADER & NAVIGATION -->
+    <!-- 1. HEADER & NAVIGATION (Book Your Ride Button Removed) -->
     <header>
         <div class="navbar">
             <div class="logo">
@@ -123,7 +152,6 @@
                 <a href="services.html">Services</a>
                 <a href="fleet.html">Our Fleet</a>
                 <a href="contact.html">Contact</a>
-                <a href="booking.html" class="btn-book-nav">Book Your Ride</a>
             </nav>
         </div>
     </header>
@@ -234,7 +262,7 @@
                     <p class="step-subtitle">Choose your preferred model from our fleet below.</p>
                     
                     <div class="fleet-list" id="fleetDynamicContainer">
-                        </div>
+                    </div>
 
                     <div class="form-nav-btns">
                         <button type="button" class="btn-prev" onclick="changeStep(2)">Back</button>
@@ -271,7 +299,14 @@
         </div>
     </section>
 
-    <<!-- ==========================================
+    <!-- FLOATING CONTACT & BACK TO TOP (Only Back to Top is kept) -->
+    <div class="floating-contact-wrapper">
+        <button onclick="scrollToTop()" id="backToTopBtn" class="contact-btn back-to-top-btn" title="Go to Top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </div>
+
+    <!-- ==========================================
          COMPLETED PREMIUM FOOTER WITH LEGAL LINKS
          ========================================== -->
     <footer style="background-color: #061938; color: #ffffff; padding: 60px 20px 20px 20px; font-family: sans-serif; border-top: 4px solid #D4AF37;">
@@ -433,136 +468,115 @@
             filteredFleet.forEach(vehicle => {
                 const isSelected = (autoSelectVehicleId === vehicle.id) ? 'selected' : '';
                 const isChecked = (autoSelectVehicleId === vehicle.id) ? 'checked' : '';
-                const acIcon = vehicle.ac.includes('Non') ? 'fa-ban' : 'fa-snowflake';
-
+                
                 const cardHTML = `
-                    <div class="car-card ${isSelected}" onclick="selectSpecificVehicle('${vehicle.id}')" id="vcard_${vehicle.id}">
-                        <input type="radio" name="selected_model" value="${vehicle.id}" style="position:absolute; opacity:0;" ${isChecked}>
+                    <div class="car-card ${isSelected}" onclick="selectVehicle('${vehicle.id}')" id="card_${vehicle.id}">
+                        <input type="radio" name="fleet_model" id="model_${vehicle.id}" value="${vehicle.name}" ${isChecked} style="position:absolute; opacity:0;">
                         <h4>${vehicle.name}</h4>
                         <div class="car-meta">
-                            <span><i class="fas fa-users"></i> Seats ${vehicle.seats}</span>
-                            <span><i class="fas fa-briefcase"></i> Bags ${vehicle.bags}</span>
-                            <span><i class="fas ${acIcon}"></i> ${vehicle.ac}</span>
+                            <span><i class="fas fa-users"></i> ${vehicle.seats} Seats</span>
+                            <span><i class="fas fa-suitcase"></i> ${vehicle.bags} Bags</span>
+                            <span><i class="fas fa-snowflake"></i> ${vehicle.ac}</span>
                         </div>
                         <p class="car-desc">${vehicle.desc}</p>
                     </div>
                 `;
                 container.insertAdjacentHTML('beforeend', cardHTML);
             });
-
-            if(autoSelectVehicleId) {
-                setTimeout(() => { changeStep(4); }, 500);
-            }
         }
 
-        function selectSpecificVehicle(vehicleId) {
+        function selectVehicle(vehicleId) {
+            const radioBtn = document.getElementById(`model_${vehicleId}`);
+            if(radioBtn) radioBtn.checked = true;
+
             document.querySelectorAll('#step3 .car-card').forEach(card => card.classList.remove('selected'));
-            const card = document.getElementById(`vcard_${vehicleId}`);
-            if(card) {
-                card.classList.add('selected');
-                card.querySelector('input[type="radio"]').checked = true;
-            }
-            setTimeout(() => { changeStep(4); }, 350);
+            const card = document.getElementById(`card_${vehicleId}`);
+            if(card) card.classList.add('selected');
+
+            setTimeout(() => { changeStep(4); }, 400);
         }
 
-        function changeStep(stepNumber) {
-            currentStep = stepNumber;
+        function changeStep(targetStep) {
             document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
-            document.getElementById(`step${stepNumber}`).classList.add('active');
+            const activeStepElement = document.getElementById(`step${targetStep}`);
+            if(activeStepElement) activeStepElement.classList.add('active');
 
-            document.querySelectorAll('.step-node').forEach((node, idx) => {
-                if (idx < stepNumber) {
+            const nodes = document.querySelectorAll('.step-node');
+            nodes.forEach(node => {
+                const stepNum = parseInt(node.getAttribute('data-step'));
+                node.classList.remove('active', 'completed');
+                if(stepNum === targetStep) {
                     node.classList.add('active');
-                    if(idx < stepNumber - 1) node.classList.add('completed');
-                } else {
-                    node.classList.remove('active', 'completed');
+                } else if(stepNum < targetStep) {
+                    node.classList.add('completed');
                 }
             });
 
-            const totalSteps = 4;
-            document.getElementById('progressFill').style.width = ((stepNumber - 1) / (totalSteps - 1)) * 100 + '%';
+            const fillPercent = ((targetStep - 1) / 3) * 100;
+            document.getElementById('progressFill').style.width = `${fillPercent}%`;
             
-            const element = document.querySelector('.booking-container');
-            if(element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            currentStep = targetStep;
+            window.scrollTo({ top: 120, behavior: 'smooth' });
         }
 
-        // --- WHATSAPP REDIRECTION LOGIC (STEP 4 SUBMIT) ---
         function handleFormSubmit(e) {
             e.preventDefault();
-            
-            // Form Variables ලබා ගැනීම
-            const pickup = document.getElementById('pickup_loc').value;
-            const drop = document.getElementById('drop_loc').value;
-            const date = document.getElementById('pickup_date').value;
-            const time = document.getElementById('pickup_time').value;
+
+            const pLoc = document.getElementById('pickup_loc').value;
+            const dLoc = document.getElementById('drop_loc').value;
+            const pDate = document.getElementById('pickup_date').value;
+            const pTime = document.getElementById('pickup_time').value;
             const passengers = document.getElementById('passengers').value;
-            const tripType = document.querySelector('input[name="triptype"]:checked').value;
             
-            const categoryInput = document.querySelector('input[name="vehicle_category"]:checked');
-            const category = categoryInput ? categoryInput.value.toUpperCase() : "Not Selected";
+            const tripTypeElement = document.querySelector('input[name="triptype"]:checked');
+            const tripType = tripTypeElement ? tripTypeElement.value : 'One Way';
             
-            const modelInput = document.querySelector('input[name="selected_model"]:checked');
-            let modelName = "Not Selected";
-            if(modelInput) {
-                const found = fleetDatabase.find(v => v.id === modelInput.value);
-                if(found) modelName = found.name;
-            }
+            const categoryElement = document.querySelector('input[name="vehicle_category"]:checked');
+            const category = categoryElement ? categoryElement.value.toUpperCase() : 'Not Selected';
 
-            const custName = document.getElementById('cust_name').value;
-            const custPhone = document.getElementById('cust_phone').value;
-            const custNote = document.getElementById('cust_note').value || "N/A";
+            const modelElement = document.querySelector('input[name="fleet_model"]:checked');
+            const selectedModel = modelElement ? modelElement.value : 'Any Available Vehicle';
 
-            // WhatsApp පණිවිඩය පිළිවෙලට සකස් කිරීම
-            let whatsappMessage = `🚖 *NEW RIDE BOOKING REQUEST* 🚖\n\n`;
-            whatsappMessage += `👤 *Customer Details:* \n`;
-            whatsappMessage += `• *Name:* ${custName}\n`;
-            whatsappMessage += `• *Phone:* ${custPhone}\n\n`;
-            whatsappMessage += `📍 *Trip Details:* \n`;
-            whatsappMessage += `• *Pickup:* ${pickup}\n`;
-            whatsappMessage += `• *Drop:* ${drop}\n`;
-            whatsappMessage += `• *Date:* ${date}\n`;
-            whatsappMessage += `• *Time:* ${time}\n`;
-            whatsappMessage += `• *Pax Count:* ${passengers} Passengers\n`;
-            whatsappMessage += `• *Trip Type:* ${tripType}\n\n`;
-            whatsappMessage += `🚗 *Vehicle Details:* \n`;
-            whatsappMessage += `• *Category:* ${category}\n`;
-            whatsappMessage += `• *Selected Model:* ${modelName}\n\n`;
-            whatsappMessage += `📝 *Special Note:* \n${custNote}\n\n`;
-            whatsappMessage += `_Sent via Ride Lanka Cabs Booking System._`;
+            const name = document.getElementById('cust_name').value;
+            const phone = document.getElementById('cust_phone').value;
+            const note = document.getElementById('cust_note').value || 'None';
 
-            // URL Encode කිරීම
-            const encodedMessage = encodeURIComponent(whatsappMessage);
-            
-            // WhatsApp API ලින්ක් එක සෑදීම
-            const whatsappURL = `https://api.whatsapp.com/send?phone=${myWhatsAppNumber}&text=${encodedMessage}`;
-            
-            // අලුත් Tab එකක WhatsApp විවෘත කිරීම
+            const message = `*✨ NEW RIDE BOOKING REQUEST - RIDE LANKA CABS ✨*\n\n` +
+                            `👤 *Passenger Details:*\n` +
+                            `• *Name:* ${name}\n` +
+                            `• *Phone:* ${phone}\n\n` +
+                            `🚗 *Trip Details:*\n` +
+                            `• *Pickup:* ${pLoc}\n` +
+                            `• *Drop:* ${dLoc}\n` +
+                            `• *Date:* ${pDate}\n` +
+                            `• *Time:* ${pTime}\n` +
+                            `• *Passengers:* ${passengers} Pax\n` +
+                            `• *Trip Type:* ${tripType}\n\n` +
+                            `🚘 *Vehicle Preference:*\n` +
+                            `• *Category:* ${category}\n` +
+                            `• *Model:* ${selectedModel}\n\n` +
+                            `📝 *Special Note:*\n` +
+                            `"${note}"\n\n` +
+                            `_Please confirm availability and dispatch the quote._`;
+
+            const encodedMsg = encodeURIComponent(message);
+            const whatsappURL = `https://api.whatsapp.com/send?phone=${myWhatsAppNumber}&text=${encodedMsg}`;
             window.open(whatsappURL, '_blank');
-            return true;
+        }
+
+        // Back to top function
+        window.onscroll = function() {
+            const btn = document.getElementById("backToTopBtn");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.style.display = "flex";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
-    <a href="#" id="floatingWhatsApp" target="_blank" style="
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background-color: #25D366;
-    color: white;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    text-align: center;
-    font-size: 32px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
-" onmouseover="this.style.transform='scale(1.1)'; this.style.backgroundColor='#128C7E';" 
-   onmouseout="this.style.transform='scale(1)'; this.style.backgroundColor='#25D366';">
-    <i class="fab fa-whatsapp"></i>
-</a>
-        
 </body>
 </html>
