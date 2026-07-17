@@ -159,6 +159,109 @@
 }
 </script>
 
+<style>
+    /* 1. HAMBURGER MENU CSS */
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
+        z-index: 1000;
+    }
+    .menu-toggle span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: #0B2C5F; /* Header theme color */
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+    
+    @media (max-width: 768px) {
+        .menu-toggle {
+            display: flex;
+        }
+        .navbar nav {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 999;
+        }
+        .navbar nav.active {
+            display: flex;
+        }
+        .navbar nav a {
+            margin: 10px 0;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    /* 2. HERO SECTION RESPONSIVE STYLING FOR MOBILE */
+    @media (max-width: 768px) {
+        .hero-section-custom {
+            padding: 80px 15px !important; /* Reduces vertical padding on mobile */
+        }
+        .hero-title-custom {
+            font-size: 1.8rem !important; /* Smaller main heading */
+            line-height: 1.2 !important;
+        }
+        .hero-desc-custom {
+            font-size: 1rem !important; /* Smaller paragraph text */
+            margin-bottom: 25px !important;
+        }
+        .hero-btn-container {
+            flex-direction: column;
+            gap: 10px !important;
+            align-items: center;
+        }
+        .hero-btn-container a {
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            padding: 12px 20px !important;
+        }
+        .hero-phone-block {
+            padding: 10px 20px !important;
+            border-radius: 30px !important;
+            width: 100%;
+            box-sizing: border-box;
+            justify-content: center !important;
+        }
+        .hero-phone-link {
+            font-size: 1.4rem !important;
+        }
+    }
+
+    /* 3. BACK TO TOP BUTTON CSS */
+    .back-to-top-btn {
+        background-color: #D4AF37; /* Gold color matching theme */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+    }
+    .back-to-top-btn.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    .back-to-top-btn:hover {
+        background-color: #0B2C5F;
+        color: #ffffff;
+        transform: scale(1.1);
+    }
+</style>
+
 </head>
 <body>
 
@@ -168,7 +271,13 @@
             <div class="logo">
                 <img src="images/logo/logo.png" alt="Ride Lanka Cabs Logo">
             </div>
-            <nav>
+            <!-- Hamburger Menu Icon -->
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="nav-menu">
                 <a href="index.html">Home</a>
                 <a href="about.html">About Us</a>
                 <a href="services.html">Services</a>
@@ -182,21 +291,19 @@
     <!-- ==========================================
          2. FIXED HERO SECTION WITH BACKGROUND IMAGE
          ========================================== -->
-    <section style="position: relative; padding: 130px 20px; background: linear-gradient(rgba(6, 25, 56, 0.85), rgba(6, 25, 56, 0.85)), url('images/hero-bg.jpg') no-repeat center center/cover; font-family: sans-serif; text-align: center; color: #ffffff;">
+    <section class="hero-section-custom" style="position: relative; padding: 130px 20px; background: linear-gradient(rgba(6, 25, 56, 0.85), rgba(6, 25, 56, 0.85)), url('images/hero-bg.jpg') no-repeat center center/cover; font-family: sans-serif; text-align: center; color: #ffffff;">
         <div style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 2;">
             
             <!-- Core Intro Block -->
             <div style="max-width: 850px; margin: 0 auto;">
                 <span style="color: #D4AF37; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; display: block; margin-bottom: 15px;">Welcome to Ride Lanka Cabs</span>
-                <h1 style="color: #ffffff; font-size: 3rem; font-weight: 800; line-height: 1.3; margin: 0 0 20px 0; letter-spacing: -0.5px;">
+                <h1 class="hero-title-custom" style="color: #ffffff; font-size: 3rem; font-weight: 800; line-height: 1.3; margin: 0 0 20px 0; letter-spacing: -0.5px;">
                 Sri Lanka Taxi Service, Car Hire, Van Hire & Bus Hire <br><span style="color: #D4AF37;">24hrs Islandwide service </span>
                 </h1>
-                <p style="color: #e2e8f0; font-size: 1.15rem; line-height: 1.8; margin: 0 0 40px 0;">
-                Ride Lanka Cabs provides reliable taxi services across Sri Lanka, including airport transfers, car hire, van hire, bus hire, chauffeur services and private tours. Based in Kalutara and operating island-wide, we offer safe, comfortable and affordable transportation with professional drivers and a modern fleet available 24/7.
-                </p>
+                
                 
                 <!-- CTA Buttons with Matched Animations -->
-                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 35px;">
+                <div class="hero-btn-container" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 35px;">
                     <!-- Book Your Ride Now Button -->
                     <a href="booking.html" style="background-color: #0B2C5F; color: #ffffff; padding: 14px 35px; font-size: 1rem; font-weight: 700; text-decoration: none; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 2px solid #0B2C5F; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#D4AF37'; this.style.borderColor='#D4AF37'; this.style.color='#0B2C5F';" onmouseout="this.style.backgroundColor='#0B2C5F'; this.style.borderColor='#0B2C5F'; this.style.color='#ffffff';">
                         <i class="fas fa-calendar-check" style="margin-right: 8px;"></i> Book Your Hire Now
@@ -208,9 +315,9 @@
                 </div>
 
                 <!-- Large Prominent Phone Number Block -->
-                <div style="display: inline-flex; align-items: center; justify-content: center; gap: 12px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); padding: 15px 30px; border-radius: 50px; border: 1px solid rgba(212,175,55,0.4);">
+                <div class="hero-phone-block" style="display: inline-flex; align-items: center; justify-content: center; gap: 12px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); padding: 15px 30px; border-radius: 50px; border: 1px solid rgba(212,175,55,0.4);">
                     <span style="color: #e2e8f0; font-size: 1rem; font-weight: 600;">Hotline:</span>
-                    <a href="tel:0767137478" style="color: #D4AF37; font-size: 1.8rem; font-weight: 800; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <a href="tel:0767137478" class="hero-phone-link" style="color: #D4AF37; font-size: 1.8rem; font-weight: 800; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                         <i class="fas fa-phone-alt" style="color: #ffffff; font-size: 1.4rem;"></i> 076 713 7478
                     </a>
                 </div>
@@ -1476,9 +1583,14 @@
         </div>
     </footer>
     <!-- ==========================================
-         STICKY FLOATING WHATSAPP & CALL BUTTONS (WITH BOUNCE ANIMATION)
+         STICKY FLOATING WHATSAPP, CALL & BACK TO TOP BUTTONS
          ========================================== -->
     <div class="floating-contact-wrapper">
+    <!-- Back to Top Button -->
+    <a href="#" id="backToTopBtn" class="contact-btn back-to-top-btn" title="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+    
     <a href="tel:+94767137478" class="contact-btn phone-btn" title="Call Us Now">
         <i class="fas fa-phone-alt"></i>
     </a>
@@ -1574,6 +1686,48 @@
         const whatsappBtn = document.getElementById('floatingWhatsAppBtn');
         if(whatsappBtn) {
             whatsappBtn.href = `https://api.whatsapp.com/send?phone=${targetNumber}&text=${encodeURIComponent(inquiryText)}`;
+        }
+        
+        // 4. HAMBURGER MENU JS
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        
+        if(mobileMenu && navMenu) {
+            mobileMenu.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                
+                // Active/X transformation style to hamburger
+                const spans = mobileMenu.getElementsByTagName('span');
+                if (navMenu.classList.contains('active')) {
+                    spans[0].style.transform = 'rotate(-45deg) translate(-5px, 6px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(45deg) translate(-5px, -6px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+        }
+
+        // 5. BACK TO TOP BUTTON SHOW/HIDE & CLICK JS
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        if(backToTopBtn) {
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
         }
     })();
 </script>
