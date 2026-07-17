@@ -116,6 +116,11 @@
         .back-to-top-btn.show { display: flex; visibility: visible; opacity: 1; }
         .back-to-top-btn:hover { background-color: var(--primary); transform: translateY(-3px); }
 
+        /* Hamburger Menu CSS */
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; max-width: 1200px; margin: 0 auto; }
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; background: none; border: none; }
+        .menu-toggle span { width: 25px; height: 3px; background: var(--primary); }
+        
         @keyframes wobbleAnimation {
             0%, 100% { transform: rotate(0) scale(1); }
             15% { transform: rotate(-15deg) scale(1.05); }
@@ -135,6 +140,10 @@
         }
 
         @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            nav { display: none; position: absolute; top: 70px; left: 0; width: 100%; background: var(--white); flex-direction: column; padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); z-index: 1000; }
+            nav.active { display: flex; }
+            nav a { padding: 10px 0; border-bottom: 1px solid #eee; text-align: center; }
             .overview-grid { grid-template-columns: 1fr; }
             .service-hero h1 { font-size: 2rem; }
             .floating-contact-wrapper { bottom: 20px; right: 20px; gap: 10px; }
@@ -145,10 +154,13 @@
 <body>
 
     <!-- HEADER AREA -->
-    <header>
+    <header style="background: white; border-bottom: 1px solid #eee;">
         <div class="navbar">
-            <div class="logo"><img src="images/logo/logo.png" alt="Ride Lanka Cabs Logo"></div>
-            <nav>
+            <div class="logo"><img src="images/logo/logo.png" alt="Ride Lanka Cabs Logo" style="height: 50px;"></div>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span><span></span><span></span>
+            </button>
+            <nav id="navMenu">
                 <a href="index.html">Home</a>
                 <a href="about.html">About Us</a>
                 <a href="services.html">Services</a>
@@ -406,18 +418,20 @@
 
     <!-- STICKY FLOATING CONTACT BUTTONS + BACK TO TOP -->
     <div class="floating-contact-wrapper">
-        <!-- Back to Top Button -->
         <button onclick="scrollToTop()" id="backToTopBtn" class="contact-btn back-to-top-btn" title="Go to Top">
             <i class="fas fa-chevron-up"></i>
         </button>
-        <!-- Phone Call Button -->
         <a href="tel:+94767137478" class="contact-btn phone-btn" title="Call Us Now"><i class="fas fa-phone-alt"></i></a>
-        <!-- WhatsApp Chat Button -->
         <a href="#" id="floatingWhatsAppBtn" target="_blank" class="contact-btn whatsapp-btn" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
     </div>
 
     <!-- JAVASCRIPT FUNCTIONS -->
     <script>
+        // Hamburger Menu Logic
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => { navMenu.classList.toggle('active'); });
+
         // WhatsApp Configuration
         (function() {
             const targetNumber = "94767137478"; 
