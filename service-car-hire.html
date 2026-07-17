@@ -92,7 +92,7 @@
         .btn-act-outline { border: 2px solid var(--primary); color: var(--primary); background: transparent; }
         .btn-act-outline:hover { background: var(--primary); color: var(--white); }
 
-        /* Need Something Else Section (WHITE BACKGROUND UPDATED) */
+        /* Need Something Else Section */
         .else-section { padding: 70px 20px; background: var(--white); border-top: 1px solid #e2e8f0; text-align: center; }
         .else-content h2 { color: var(--primary); font-size: 2.2rem; font-weight: 800; margin-bottom: 15px; }
         .else-content p { max-width: 650px; margin: 0 auto 30px auto; color: #555; font-size: 1.05rem; line-height: 1.6; }
@@ -112,10 +112,15 @@
         .whatsapp-btn:hover { background-color: #128C7E; transform: scale(1.1); }
         
         /* Back to Top Button style */
-        .back-to-top-btn { background-color: #718096; color: white; cursor: pointer; display: none; visibility: hidden; opacity: 0; transition: all 0.3s ease; }
+        .back-to-top-btn { background-color: #718096; color: white; cursor: pointer; display: none; visibility: hidden; opacity: 0; transition: all 0.3s ease; border: none; outline: none; }
         .back-to-top-btn.show { display: flex; visibility: visible; opacity: 1; }
         .back-to-top-btn:hover { background-color: var(--primary); transform: translateY(-3px); }
 
+        /* Hamburger Menu CSS */
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; max-width: 1200px; margin: 0 auto; }
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; background: none; border: none; }
+        .menu-toggle span { width: 25px; height: 3px; background: var(--primary); }
+        
         @keyframes wobbleAnimation {
             0%, 100% { transform: rotate(0) scale(1); }
             15% { transform: rotate(-15deg) scale(1.05); }
@@ -131,6 +136,10 @@
         }
 
         @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            nav { display: none; position: absolute; top: 70px; left: 0; width: 100%; background: var(--white); flex-direction: column; padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); z-index: 1000; }
+            nav.active { display: flex; }
+            nav a { padding: 10px 0; border-bottom: 1px solid #eee; text-align: center; }
             .overview-grid { grid-template-columns: 1fr; }
             .service-hero h1 { font-size: 2rem; }
             .floating-contact-wrapper { bottom: 20px; right: 20px; gap: 10px; }
@@ -141,10 +150,13 @@
 <body>
 
     <!-- HEADER AREA -->
-    <header>
+    <header style="background: white; border-bottom: 1px solid #eee;">
         <div class="navbar">
-            <div class="logo"><img src="images/logo/logo.png" alt="Ride Lanka Cabs Logo"></div>
-            <nav>
+            <div class="logo"><img src="images/logo/logo.png" alt="Ride Lanka Cabs Logo" style="height: 50px;"></div>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span><span></span><span></span>
+            </button>
+            <nav id="navMenu">
                 <a href="index.html">Home</a>
                 <a href="about.html">About Us</a>
                 <a href="services.html">Services</a>
@@ -210,7 +222,7 @@
         </div>
     </section>
 
-    <!-- OUR FLEET (UPDATED WITH ALL RELEVANT CARS) -->
+    <!-- OUR FLEET -->
     <section class="fleet-section">
         <div class="section-max">
             <span style="color: var(--accent); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; display: block; margin-bottom: 5px;">Available Vehicles</span>
@@ -305,7 +317,7 @@
         </div>
     </section>
 
-    <!-- NEED SOMETHING ELSE SECTION (UPDATED TO WHITE BACKGROUND) -->
+    <!-- NEED SOMETHING ELSE SECTION -->
     <section class="else-section">
         <div class="section-max else-content">
             <h2>Need Something Else?</h2>
@@ -317,7 +329,7 @@
         </div>
     </section>
 
-    <!-- PREMIUM FOOTER AREA -->
+    <!-- FOOTER -->
     <footer style="background-color: #061938; color: #ffffff; padding: 60px 20px 20px 20px; font-family: sans-serif; border-top: 4px solid #D4AF37;">
         <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
             <div style="flex: 1; min-width: 280px; display: flex; flex-direction: column; align-items: center; text-align: center; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 20px;">
@@ -382,20 +394,21 @@
         </div>
     </footer>
 
-    <!-- STICKY FLOATING CONTACT BUTTONS + BACK TO TOP -->
+    <!-- STICKY FLOATING CONTACT BUTTONS -->
     <div class="floating-contact-wrapper">
-        <!-- Back to Top Button (Call/WhatsApp වලට උඩින් පිහිටයි) -->
         <button onclick="scrollToTop()" id="backToTopBtn" class="contact-btn back-to-top-btn" title="Go to Top">
             <i class="fas fa-chevron-up"></i>
         </button>
-        <!-- Phone Call Button -->
         <a href="tel:+94767137478" class="contact-btn phone-btn" title="Call Us Now"><i class="fas fa-phone-alt"></i></a>
-        <!-- WhatsApp Chat Button -->
         <a href="#" id="floatingWhatsAppBtn" target="_blank" class="contact-btn whatsapp-btn" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
     </div>
 
-    <!-- JAVASCRIPT FOR WHATSAPP INQUIRY AND BACK TO TOP FUNCTION -->
     <script>
+        // Hamburger Menu Logic
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => { navMenu.classList.toggle('active'); });
+
         // WhatsApp Configuration
         (function() {
             const targetNumber = "94767137478"; 
@@ -408,22 +421,15 @@
 
         // Back to Top Button Logic
         const backToTopBtn = document.getElementById("backToTopBtn");
-
         window.onscroll = function() {
-            scrollFunction();
-        };
-
-        function scrollFunction() {
-            // පිටුව මැදට හෝ පහළට යන විට බටන් එක පෙන්වයි (ප්‍රමාණය 300px දක්වා ස්ක්‍රෝල් වූ පසු)
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                 backToTopBtn.classList.add("show");
             } else {
                 backToTopBtn.classList.remove("show");
             }
-        }
+        };
 
         function scrollToTop() {
-            // ඉතා සුන්දර ලෙස ඉහළට සෙමෙන් ගමන් කිරීම (Smooth Scroll)
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"

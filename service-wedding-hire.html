@@ -43,6 +43,15 @@
             --white: #ffffff;
         }
 
+        /* Header & Mobile Menu */
+        header { background: var(--white); padding: 15px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .navbar { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 50px; }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.95rem; }
+        .btn-book-nav { background: var(--primary); color: var(--white) !important; padding: 10px 20px; border-radius: 6px; }
+        .hamburger { display: none; font-size: 24px; cursor: pointer; color: var(--primary); }
+
         /* Hero Layout */
         .service-hero {
             background: linear-gradient(rgba(11, 44, 95, 0.85), rgba(6, 25, 56, 0.9)), url('images/services/wedding.jpg') no-repeat center/cover;
@@ -114,7 +123,11 @@
             .service-hero h1 { font-size: 2rem; }
             .floating-contact-wrapper { bottom: 20px; right: 20px; gap: 10px; }
             .contact-btn { width: 46px; height: 46px; font-size: 20px; }
-            .fleet-tabs { flex-wrap: wrap; }
+            
+            /* Hamburger Menu Mobile CSS */
+            .hamburger { display: block; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: var(--white); padding: 20px 0; border-top: 1px solid #ddd; text-align: center; box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+            .nav-links.active { display: flex; }
         }
     </style>
 </head>
@@ -124,7 +137,8 @@
     <header>
         <div class="navbar">
             <div class="logo"><img src="images/logo/logo.png" alt="Ride Lanka Cabs Logo"></div>
-            <nav>
+            <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <nav class="nav-links" id="navLinks">
                 <a href="index.html">Home</a>
                 <a href="about.html">About Us</a>
                 <a href="services.html">Services</a>
@@ -376,6 +390,11 @@
         </div>
 
         <script>
+            // Mobile Menu Toggle
+            function toggleMenu() {
+                document.getElementById("navLinks").classList.toggle("active");
+            }
+            
             // Tab switching function
             function openFleetTab(evt, tabName) {
                 var i, fleetcontainer, tablinks;

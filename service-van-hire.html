@@ -130,8 +130,14 @@
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(11, 44, 95, 0); }
         }
 
+        /* Hamburger Menu Styles */
+        .menu-toggle { display: none; cursor: pointer; font-size: 24px; color: var(--primary); }
         @media (max-width: 991px) {
             .fleet-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+            .menu-toggle { display: block; }
+            .navbar nav { display: none; width: 100%; flex-direction: column; background: var(--white); position: absolute; top: 70px; left: 0; padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+            .navbar nav.active { display: flex; }
+            .navbar nav a { padding: 15px; border-bottom: 1px solid #eee; }
         }
 
         @media (max-width: 768px) {
@@ -146,9 +152,10 @@
 
     <!-- HEADER AREA -->
     <header>
-        <div class="navbar">
-            <div class="logo"><img src="images/logo/logo.png" alt="Ride Lanka Cabs Logo"></div>
-            <nav>
+        <div class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: white; position: relative;">
+            <div class="logo"><img src="images/logo/logo.png" alt="Ride Lanka Cabs Logo" style="height: 50px;"></div>
+            <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
                 <a href="index.html">Home</a>
                 <a href="about.html">About Us</a>
                 <a href="services.html">Services</a>
@@ -431,18 +438,20 @@
 
     <!-- STICKY FLOATING CONTACT BUTTONS + BACK TO TOP -->
     <div class="floating-contact-wrapper">
-        <!-- Back to Top Button -->
         <button onclick="scrollToTop()" id="backToTopBtn" class="contact-btn back-to-top-btn" title="Go to Top">
             <i class="fas fa-chevron-up"></i>
         </button>
-        <!-- Phone Call Button -->
         <a href="tel:+94767137478" class="contact-btn phone-btn" title="Call Us Now"><i class="fas fa-phone-alt"></i></a>
-        <!-- WhatsApp Chat Button -->
         <a href="#" id="floatingWhatsAppBtn" target="_blank" class="contact-btn whatsapp-btn" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
     </div>
 
     <!-- JAVASCRIPT FUNCTIONS -->
     <script>
+        // Hamburger Menu Toggle
+        function toggleMenu() {
+            document.getElementById("navMenu").classList.toggle("active");
+        }
+
         // WhatsApp Configuration
         (function() {
             const targetNumber = "94767137478"; 
