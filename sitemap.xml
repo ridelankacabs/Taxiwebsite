@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
@@ -8,27 +7,27 @@
     </url>
 
     <url>
-        <loc>https://ridelankacabs.pages.dev/about.html</loc>
+        <loc>https://ridelankacabs.pages.dev/about</loc>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://ridelankacabs.pages.dev/services.html</loc>
+        <loc>https://ridelankacabs.pages.dev/services</loc>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://ridelankacabs.pages.dev/fleet.html</loc>
+        <loc>https://ridelankacabs.pages.dev/fleet</loc>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://ridelankacabs.pages.dev/booking.html</loc>
+        <loc>https://ridelankacabs.pages.dev/booking</loc>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>https://ridelankacabs.pages.dev/contact.html</loc>
+        <loc>https://ridelankacabs.pages.dev/contact</loc>
         <priority>0.7</priority>
     </url>
 
